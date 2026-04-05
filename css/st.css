@@ -1,0 +1,188 @@
+.hero-section {
+    /* تأكد من المسار الصحيح للصورة */
+    background-image: 
+                url('../imges/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* جعل الارتفاع يغطي الشاشة بالكامل */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* إزالة أي لون خلفية قد يأتي من بوتستراب للفقرة أو الأعمدة */
+.hero-section p, .hero-section .container, .hero-section .row {
+    background-color: transparent !important;
+    background: none !important;
+}
+
+ .custom-input {
+        border: 2px solid #f1f1f1;
+        border-radius: 12px;
+        padding: 12px;
+        transition: 0.3s;
+    }
+    .custom-input:focus {
+        border-color: #e3f2fd !important; /* أزرق فاتح */
+        box-shadow: 0 0 10px rgba(227, 242, 253, 0.8) !important;
+        outline: none;
+    }
+
+/* تنسيق الزر الأصفر ليتطابق مع الشريط العلوي */
+.btn-yellow {
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    transition: 0.3s ease;
+}
+
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(250, 248, 248);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* الدائرة النشطة: تكبر ويصبح لونها أصفر */
+.dot.active {
+    background-color: #ffcc00;
+    transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../imges/p1.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 90vh;
+    transition: background 0.5s ease; /* تنعيم انتقال الخلفية إذا أردت تغييرها */
+}
+  .custom-nav .nav-link {
+    color: #ffc107 !important; /* لون Bootstrap Warning */
+    transition: 0.3s;
+  }
+
+  /* تغيير الخلفية عند النقر (الحالة النشطة) */
+  .custom-nav .nav-link.active {
+    background-color: #ffc107 !important; /* خلفية صفراء */
+    color: #000 !important; /* نص أسود للتباين */
+    border-radius: 100px;
+    padding: 10px;
+  }
+
+  /* تأثير عند مرور الماوس فقط */
+  .custom-nav .nav-link:hover:not(.active) {
+    background-color: rgba(255, 193, 7, 0.1);
+  }
+  .nav-link:hover {
+    color: #ffbe33 !important;
+    transition: 0.3s;
+  }
+  .bi:hover {
+    color: #ffbe33 !important;
+    transition: 0.3s;
+  }
+
+    /* إخفاء أي نصوص تعريفية علوية يدوياً في صفحتك */
+  .intro-text-to-remove { display: none; } 
+  
+  /* تجميل حقل البحث عند فتحه */
+  #searchModal input:focus {
+    outline: none;
+    box-shadow: 0 0 15px #ffbe33;
+    border-color: #ffbe33;
+  }
+  .custom-card {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  .custom-card:hover {
+    transform: translateY(-10px); /* يرتفع للأعلى قليلاً */
+    shadow: 0 1rem 3rem  white!important; /* يقوي الظل */
+    /* تغيير طفيف في درجة الأبيض */
+  }
+   .custom-tab {
+        color: rgb(32, 29, 187) !important;
+        border-radius: 50px !important; /* انحناءات من جميع الاتجاهات */
+        transition: 0.3s;
+        border: 1px solid transparent;
+    }
+    
+    .nav-pills .custom-tab.active {
+        background-color: #ffc107 !important; /* الخلفية الصفراء */
+        color: #000 !important;
+        box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+    }
+   
+ .pizza-img:active {
+    /* التكبير بنسبة 20% والتحرك قليلاً للأمام (لأعلى) */
+    transform: scale(1.2) translateY(-10px);
+    /* إضافة ظل ليعطي إيحاء بأنها طفت فوق الصفحة */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+  }
+
+  /* جعل التجاوب أكثر سلاسة عند مرور الماوس */
+  .pizza-img:hover {
+    transform: scale(1.05);
+  }
+  .rounded-circle:hover{
+       transform: scale(1.05);
+  }
+   .btn-warning {
+        background-color: #ffc107 !important;
+        color: #000 !important;
+        transition: 0.4s;
+    }
+    .btn-warning:hover {
+        background-color: #ffffff !important; /* يتحول للأبيض عند اللمس لشكل جمالي */
+        transform: translateY(-5px);
+    }
+
+ 
+
+
+  /* الصورة صغيرة افتراضياً */
+  .food-img-small {
+    width: 40% !important; /* حجم صغير متناسق */
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* تكبير بسيط جداً عند الضغط (Active) */
+  .food-img-small:active {
+    /* التكبير بنسبة 1.15 فقط (15% زيادة) والبروز للأمام قليلاً */
+    transform: scale(1.15) translateY(-5px) !important;
+  }
+
+  /* تكبير طفيف جداً عند مرور الماوس فقط */
+  .food-img-small:hover {
+    transform: scale(1.05);
+  }
+
+    .dot {
+        height: 12px;
+        width: 12px;
+        background-color: #bbb; /* لون النقاط غير النشطة */
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.3s ease; /* أنيميشن ناعم للتكبير */
+    }
+
+    .dot.active {
+        background-color: #ffc107; /* اللون الأصفر للنشطة */
+        transform: scale(1.5); /* تكبير النقطة */
+    }
+
+
+
+ 
+   
+
+
+ 
+
+

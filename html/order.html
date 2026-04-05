@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة طلب الوجبة</title>
+    <!-- Bootstrap 5 CSS -->
+    
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .order-card { border-radius: 20px; border: none; }
+    </style>
+</head>
+<body>
+
+<script src="../js/jss.js"></script>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow order-card p-4">
+                <h2 class="text-center mb-4 text-warning">طلب وجبة جديدة 🍔</h2>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">اسم الوجبة</label>
+                        <select class="form-select border-pill">
+                            <option selected>اختر الوجبة...</option>
+                            <option value="1">برجر كلاسيك</option>
+                            <option value="2">بيتزا مارجريتا</option>
+                            <option value="3">باستا إيطالية</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">الكمية</label>
+                        <input type="number" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">ملاحظات إضافية</label>
+                        <textarea class="form-control" rows="2" placeholder="بدون بصل، زيادة صوص..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">عنوان التوصيل</label>
+                        <input type="text" class="form-control" placeholder="أدخل عنوانك بالتفصيل">
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100 text-white rounded-pill shadow-sm">إتمام الطلب الآن</button>
+                    <a href="in.html" class="btn btn-link w-100 text-secondary mt-2">العودة للرئيسية</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

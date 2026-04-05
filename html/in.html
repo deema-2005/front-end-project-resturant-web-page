@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net">
+
+<style>
+
+
+    /* التنسيق الأساسي للنقاط */
+    .dot {
+        width: 12px;           /* عرض النقطة */
+        height: 12px;          /* طول النقطة */
+        background-color: #fff; /* لون أبيض للنقاط غير النشطة */
+        border-radius: 50%;    /* جعلها دائرية */
+        cursor: pointer;
+        transition: all 0.3s ease; /* نعومة التحويل */
+    }
+
+    /* تنسيق النقطة النشطة */
+    .dot.active {
+        background-color: #ffc107; /* اللون الأصفر */
+        transform: scale(1.5);     /* تكبير الحجم بنسبة 50% */
+    }
+
+
+  /* تأثير جميل عند تمرير الماوس على الكارد */
+  .custom-card {
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  .custom-card:hover {
+    transform: translateY(-10px); /* يرتفع للأعلى قليلاً */
+    shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; /* يقوي الظل */
+    background-color: #f8f9fa !important; /* تغيير طفيف في درجة الأبيض */
+  }
+
+  /* تنسيق العناصر الافتراضي (نص أسود) */
+.food-menu .nav-link {
+    color: black !important;
+    background-color: transparent;
+    border: none;
+    transition: 0.5s;
+}
+
+/* تنسيق العنصر النشط (خلفية سوداء ونص أبيض) */
+.food-menu .nav-link.active {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* اختياري: تغيير اللون عند تمرير الماوس */
+.food-menu .nav-link:hover {
+    color: #555;
+}
+
+  /* تلوين النص بالأصفر افتراضياً */
+  .custom-nav .nav-link {
+    color: #ffc107 !important; /* لون Bootstrap Warning */
+    transition: 0.3s;
+  }
+
+  /* تغيير الخلفية عند النقر (الحالة النشطة) */
+  .custom-nav .nav-link.active {
+    background-color: #ffc107 !important; /* خلفية صفراء */
+    color: #000 !important; /* نص أسود للتباين */
+    border-radius: 50px;
+    padding: 10px;
+  }
+
+  /* تأثير عند مرور الماوس فقط */
+  .custom-nav .nav-link:hover:not(.active) {
+    background-color: rgba(255, 193, 7, 0.1);
+  }
+ 
+  /* تحسينات إضافية للمظهر */
+  .nav-link:hover {
+    color: #ffbe33 !important;
+    transition: 0.3s;
+  }
+  .bi:hover {
+    color: #ffbe33 !important;
+    transition: 0.3s;
+  }
+
+    /* إخفاء أي نصوص تعريفية علوية يدوياً في صفحتك */
+  .intro-text-to-remove { display: none; } 
+  
+  /* تجميل حقل البحث عند فتحه */
+  #searchModal input:focus {
+    outline: none;
+    box-shadow: 0 0 15px #ffbe33;
+    border-color: #ffbe33;
+  }
+   .pizza-img:active {
+    /* التكبير بنسبة 20% والتحرك قليلاً للأمام (لأعلى) */
+    transform: scale(1.2) translateY(-10px);
+    /* إضافة ظل ليعطي إيحاء بأنها طفت فوق الصفحة */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+  }
+
+  /* جعل التجاوب أكثر سلاسة عند مرور الماوس */
+  .pizza-img:hover {
+    transform: scale(1.1);
+  }
+  .btn-warning {
+        background-color: #ffc107 !important;
+        color: #000 !important;
+        transition: 0.4s;
+    }
+    .btn-warning:hover {
+        background-color: #ffffff !important; /* يتحول للأبيض عند اللمس لشكل جمالي */
+        transform: translateY(-5px);
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net">
+</head>
+
+<body>
+ 
+
+   
+        
+       
+
+
+
+
+   
+
+ 
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jss.js"></script>
+  <script>
+     const contents = [
+    {
+        title: "Fast Food  Resturnt1",
+        desc: "اكتشف تجربة طعام فريدة تجمع بين المذاق الأصيل والخدمة الراقية في قلب المدينة."
+    },
+    {
+        title: "Fast Food  Resturnt2",
+        desc: "نقدم لكم تشكيلة واسعة من الأطباق العالمية المحضرة بأيدي أمهر الطهاة."
+    },
+    {
+        title: "Fast Food  Resturnt3",
+        desc: "استمتع بخصوصية تامة وأجواء مريحة تناسب جميع مناسباتكم الخاصة."
+    }
+];
+       function changeContent(index) {
+        // 1. تغيير العنوان والوصف
+        document.getElementById('hero-title').innerText = content[index].title;
+        document.getElementById('hero-desc').innerText = content[index].desc;
+
+        // 2. تحديث شكل النقاط
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            if (i === index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+  </script>
+ 
+
+<div class="container-fluid row g-2 justify-content-center" 
+     style="background-image: url('../images/hero-bg.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            min-height: 700px; 
+          
+            color: white;">
+
+<!-- شريط التنقل المنسق -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3 fixed-top">
+  <div class="container">
+    <!-- الشعار -->
+    <a class="navbar-brand fw-bold fs-2" href="#home" style="font-family: 'Dancing Script', cursive;">Feane</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <!-- الروابط موسطة في المنتصف تماماً -->
+      <ul class="navbar-nav mx-auto text-uppercase fw-medium">
+        <li class="nav-item px-3"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item px-3"><a class="nav-link" href="#bout">About</a></li>
+        <li class="nav-item px-3"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item px-3"><a class="nav-link" href="#book">Book Table</a></li>
+      </ul>
+
+     <a href="javascript:void(0)" class="text-white border-0 p-0"  data-bs-toggle="modal" data-bs-target="#myModal">
+    <i class="bi bi-search fs-5" style="margin-right: 20px;" ></i>
+  </a>
+</div>
+
+<!-- نافذة البحث المنبثقة (بدون رأس أو أزرار سفلية) -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0">
+        <!-- حقل الإدخال مع الـ Hint المطلوب -->
+        <input type="text" class="form-control form-control-lg rounded-pill shadow-lg text-center" 
+               placeholder="ابحث هنا.." 
+               style="border: 2px solid #ff33c2; padding: 15px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- أيقونة المستخدم (بدون زر) -->
+        <a href="#" class="text-white" style="margin-right: 20px;"><i class="bi bi-person-fill fs-5 "data-bs-toggle="modal" data-bs-target="#authModal" ></i></a>
+
+        <!-- أيقونة السلة (بدون زر) -->
+        <a href="#" class="text-white"style="margin-right: 20px;"data-bs-toggle="modal" data-bs-target="#authModal"  ><i class="bi bi-cart-fill fs-5" data-bs-toggle="modal" data-bs-target="#authModal"></i></a>
+    
+<a href="order.html" class="text-decoration-none">
+    <button type="button" class="btn btn-warning text-white p-2 rounded-pill px-4 shadow" id="order">
+        Order online
+    </button>
+</a>
+  </div>
+</nav>
+
+
+<!-- 2. هيكل الرسالة المنبثقة (Modal) -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true" dir="ltr">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden;">
+             
+            <!-- رأس الرسالة (يحتوي على زر الإغلاق) -->
+            <div class="modal-header  text-left">
+               <h5 class="modal-title fw-bold text-right" >Search</h5>
+                <!-- زر الإغلاق X -->
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <!-- محتوى الرسالة (حقل الإدخال) -->
+            <div class="modal-body p-4 text-center">
+
+                <input type="text" class="form-control custom-input text-center" placeholder="ابحث هنا ..">
+            </div>
+
+          
+         
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true" dir="rtl">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow" style="border-radius: 25px; overflow: hidden;">
+            
+            <!-- رأس النافذة: نصوص التبديل -->
+            <div class="modal-header border-0 justify-content-center  p-3">
+                <ul class="nav nav-pills" id="authTab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active fw-bold px-4 mx-2 custom-tab " id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button">Login</button>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link fw-bold px-4 mx-2 custom-tab" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button">Register</button>
+                    </li>
+                </ul>
+            </div>
+              <div class="modal-body p-4">
+                <div class="tab-content" id="authTabContent">
+                    
+                    <!-- 1. نموذج تسجيل الدخول (حقلين) -->
+                    <div class="tab-pane fade show active text-start" id="login">
+                        
+                        <input type="email" class="form-control custom-input mb-3 text-start" placeholder=" Email Address">
+                        <input type="password" class="form-control custom-input mb-4 text-start" placeholder="Passsword">
+                        <button class="btn btn-warning w-100 fw-bold rounded-pill py-2">login</button>
+                    </div>
+
+                    <!-- 2. نموذج إنشاء حساب (4 حقول) -->
+                    <div class="tab-pane fade text-right" id="register">
+                          <input type="text" class="form-control custom-input mb-3 text-start " placeholder="Full name">
+                        <input type="email" class="form-control custom-input mb-3  text-start" placeholder="Email adress">
+                        <input type="password" class="form-control custom-input mb-3 text-start " placeholder="Password">
+                        <input type="password" class="form-control custom-input mb-4 text-start " placeholder="Confirm Password">
+                        <button class="btn btn-warning w-100 fw-bold rounded-pill py-2">Create account</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- زر إغلاق X في الزاوية -->
+            <button type="button" class="btn-close position-absolute top-0 start-0 m-3" data-bs-dismiss="modal"></button>
+        </div>
+    </div>
+</div>
+
+
+    <section class="hero-section d-flex align-items-center justify-content-center text-white">
+    <div class="container "> <!-- إضافة شفافية للحاوية -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-start bg-transparent"></div>
+                <!-- العناصر مع معرفات (ID) لتغيير محتواها -->
+                <h1 id="hero-title" class="display-3 fw-bold mb-4">Fast Food Resturant</h1>
+                <p id="hero-desc" class="lead mb-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing<br> 
+                elit. Amet deleniti optio necessitatibus veniam<br> 
+                recusandae molestias quos aut officia ut illum quod<br>
+                
+                </p>
+                
+
+                <!-- الدوائر (Pagination Dots) -->
+                    <div class="d-flex gap-2 justify-content-start mt-4">
+                    <div class="dot active" onclick="changeContent(0)"></div>
+                    <div class="dot" onclick="changeContent(1)"></div>
+                    <div class="dot" onclick="changeContent(2)"></div>
+                </div>
+            </div>
+        </div>
+      </div>      
+</section>   
+<div class="container mt-5">
+  <div class="row g-2 ">
+    
+    <!-- العمود الأول: يحتوي على التصميم الذي أرسلته -->
+    <div class="col-md-6 mb-4 d-flex justify-content-center">
+      <div class="bg-dark text-white p-0 overflow-hidden rounded-3 w-100 " style=" height: 200px;">
+        <div class="row g-0 h-100">
+          <!-- قسم الصورة -->
+          <div class="col-6 d-flex align-items-center justify-content-center"> 
+            <img src="../images/o1.jpg" class="rounded-circle border border-4 border-warning" 
+                 style="width: 130px; height: 130px; object-fit: cover;" alt="صورة دائرية">
+          </div>
+          <!-- قسم الوصف -->
+          <div class="col-6 d-flex align-items-center justify-content-center text-center p-2">
+            <div class="d-flex flex-column gap-1">
+              <p class="mb-0 fw-bold" style="font-family: 'Comic Sans MS', cursive;">Tasty Thursday</p>
+              <p class="mb-2"><strong><span style="font-size: 28px;">20%</span></strong> off</p>
+              <button class="btn btn-warning rounded-pill btn-sm fw-bold" type="button">Order Now</button>
+            </div>
+                </div>
+      </div>
+      </div>
+      </div>
+
+        <div class="col-md-6 mb-4 d-flex justify-content-center">
+      <!-- نسخة مكررة كمثال -->
+      <div class="bg-dark text-white p-0 overflow-hidden rounded-3 w-100 " style="width: 350px; height: 200px;">
+        <div class="row g-0 h-100">
+          <div class="col-6 d-flex align-items-center justify-content-center"> 
+            <img src="../images/o2.jpg" class="rounded-circle border border-4 border-warning" 
+                 style="width: 130px; height: 130px; object-fit: cover;" alt="صورة دائرية">
+          </div>
+          <div class="col-6 d-flex align-items-center justify-content-center text-center p-2">
+            <div class="d-flex flex-column gap-1">
+              <p class="mb-0 fw-bold">Great Friday</p>
+              <p class="mb-2"><strong><span style="font-size: 28px;">15%</span></strong> off</p>
+              <button class="btn btn-warning rounded-pill btn-sm fw-bold" type="button">Order Now</button>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </body>
+    
+
+   
+      
+              
+
+
+
+
+  
+
+ <div  id="menu"   class="container py-5 ">
+  <h2 class="text-center mb-4 fw-bold">Our Menu</h2>
+  <ul class="nav nav-pills justify-content-center food-menu mb-5">
+    <li class="nav-item"><button class="nav-link active" onclick="filterMenu('all', this)">ALL</button></li>
+    <li class="nav-item"><button class="nav-link" onclick="filterMenu('burger', this)">Burger</button></li>
+    <li class="nav-item"><button class="nav-link" onclick="filterMenu('fries', this)">Fries</button></li>
+    <li class="nav-item"><button class="nav-link" onclick="filterMenu('pizza', this)">Pizza</button></li>
+        <li class="nav-item"><button class="nav-link" onclick="filterMenu('pasta', this)">Pasta</button></li>
+
+  </ul>
+  </div>
+
+  <div class="container-fluid  py-5 ">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 justify-content-center m-0  ">
+      <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item pizza  " style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+
+   <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f1.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Pizza</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae      </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+  </div>
+
+  <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+ 
+         <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item burger " style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f2.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Burger</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae    </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+
+  <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+      <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item pizza " style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f3.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Pizza</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae    </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+          <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+     <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item fries" style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f5.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Fries</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae ullam corrupti cupiditate nihil qu    </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+          <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+      <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item pasta" style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f4.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Pizza</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae      </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+
+<svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+     <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item pizza" style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f6.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Pasta</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae    </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+         <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+    
+  <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item burger" style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f7.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Burger</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae   </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i>
+
+  <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+    <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item burger" style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f8.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Burger</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae     </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i> 
+         <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+    
+  <div class="card h-100 border-0 shadow-sm mx-auto bg-dark p-0 menu-item pasta" style="max-width: 22rem; border-radius: 15px; overflow: hidden;">
+  <!-- تعديل الزاوية السفلية اليسرى للصورة -->
+ <div class="d-flex align-items-center justify-content-center" style="height: 180px; background-color: #f8f9fa; border-radius: 0 0 0 50px;">
+        <img src="../images/f9.png" class="img-fluid pizza-img" alt="Pizza" 
+             style="width: 55%; max-width: 140px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;"> 
+      </div>
+  <div class="card-body  text-white d-flex flex-column justify-content-between p-4  ">
+    <h5 class="card-title fw-bold text-start">Delicos Pasta</h5>
+    <p class="card-text text-secondary text-start text-white">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit dignissimos quae      </p>
+     <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="fw-bold fs-5">$15.00</span>
+      <button class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center" 
+              style="width: 40px; height: 40px; background-color: #ffc107; border: none;">
+        <i class="bi bi-cart-fill text-white"></i> 
+         <svg xmlns="http://www.w3.org" width="18" height="18" fill="white" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+      
+  
+
+   
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="bout" class="container-fluid mt-5  p-0 bg-dark">
+  <!-- justify-content-around توزع المساحة بين النموذج والصورة بشكل متوازن -->
+  <div class="row g-0 align-items-center justify-content-around py-5">
+    <div class="col-md-6 text-center">
+      <!-- img-fluid تجعلها متجاوبة، و max-height تحافظ على أبعادها الجمالية -->
+      <img src="../images/ab.png" class="img-fluid rounded shadow" 
+           style="max-height: 450px; width: auto; object-fit: contain;" 
+           alt="Restaurant image">
+    </div>
+    <!-- عمود النموذج: يأخذ مساحة محددة فقط -->
+    <div class="col-md-5 col-lg-4 px-4 text-white">
+
+    
+      <h5 style="font-size: 40px;">We are Feana</h5>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ipsam unde id, suscipit voluptate quos commodi perferendis velit enim facere sequi alias quis quia sunt et nisi saepe vero earum.</p>
+        
+        <button class="btn btn-warning rounded-pill px-5 text-white fw-bold" type="button">Book Now</button>
+      </div>
+    
+
+    <!-- عمود الصورة: يأخذ حجم الصورة الطبيعي -->
+    
+
+  </div>
+</div>
+</div>
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+         
+
+
+
+<div id="book" class="container-fluid mt-5  p-0">
+  <div class="row g-0 align-items-center justify-content-center"> <!-- justify-content-center لتوسيط المحتوى -->
+    
+    <!-- عمود النموذج: قللنا العرض من 6 إلى 4 لكي لا يأخذ كل المساحة -->
+    <div class="col-md-5 col-lg-4 p-5">
+      <h3 class="mb-4 fw-bold text-center text-md-start">Book A Table</h3>
+      <form style="max-width: 400px; margin: auto;"> <!-- تحديد أقصى عرض للنموذج -->
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="mb-3">
+          <input type="tel" class="form-control" placeholder="Phone Number">
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="mb-3">
+          <select class="form-select">
+            <option selected disabled>How many persons?</option>
+            <option>1</option>
+            <option>2</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <input type="date" class="form-control">
+        </div>
+        <div class="text-center text-md-start">
+          <button class="btn btn-warning rounded-pill px-5 text-white" type="button">Book Now</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- عمود الصورة: ستأخذ حجمها الطبيعي المتناسب (Responsive) -->
+    <div class="col-md-6 text-center p-3">
+      <img src="../images/client1.jpg" class="img-fluid rounded shadow-sm" style="max-height: 450px; width: auto;" alt="Booking image">
+    </div>
+
+  </div>
+</div>
+
+
+
+ 
+
+   
+      
+ 
+
+
+
+<!-- الـ Container باللون الرمادي -->
+<div class="container-fluid py-5" style="background-color: #e9ecef;"> 
+  <div class="container">
+    <h2 class="text-center text-dark mb-5">What says our customers</h2>
+    <div class="row justify-content-center">
+      
+      <!-- الكارد الأول -->
+      <div class="col-md-6 mb-4">
+        <div class="card custom-card border-0 shadow-sm rounded-4 text-center p-4 h-100 bg-white">
+          <div class="d-flex justify-content-center mb-3">
+            <!-- الصورة بدون إطار -->
+            <img src="../images/client1.jpg" class="rounded-circle shadow-sm m" 
+                 style="width: 120px; height: 120px;transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);  object-fit: cover;" alt="Client 1">
+          </div>
+          <div class="card-body p-0 text-dark">
+            <p class="card-text mb-4 text-muted" style="line-height: 1.6; font-style: italic;">
+              "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus sunt temporibus impedit, one? Est modi consequatur odit quod."
+            </p>
+            <!-- الاسم باللون الأسود -->
+            <h5 class="fw-bold mb-1 text-dark">Demma Alshorafa</h5>
+            <p class="small text-secondary mb-0">My HHMMG</p>
+          </div>
+        </div>
+      </div>
+                 <!-- الكارد الثاني -->
+      <div class="col-md-6 mb-4">
+        <div class="card custom-card border-0 shadow-sm rounded-4 text-center p-4 h-100 bg-white">
+          <div class="d-flex justify-content-center mb-3">
+            <img src="../images/client2.jpg" class="rounded-circle shadow-sm m" 
+                 style="width: 120px; height: 120px; object-fit: cover;" alt="Client 2">
+          </div>
+          <div class="card-body p-0 text-dark">
+            <p class="card-text mb-4 text-muted" style="line-height: 1.6; font-style: italic;">
+              "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus sunt temporibus impedit, one? Est modi consequatur odit quod."
+            </p>
+            <h5 class="fw-bold mb-1 text-dark">Demma Alshorafa</h5>
+            <p class="small text-secondary mb-0">Graphic Designer</p>
+          </div>
+        </div>
+      </div>
+             </div>
+             </div>
+             </div>     
+    
+       
+       
+
+
+<footer class="text-white pt-5 pb-3 m-0  w-100 bg-dark  background-size: cover; " style="background-color: rgb(30, 30, 43);">
+  <div class="container-fluid px-0">
+    
+    <!-- الصف الرئيسي مع إلغاء الهوامش الجانبية -->
+    <div class="row m-0">
+      
+      <!-- قسم مواعيد العمل - متمركز في عموده -->
+      <div class="col-md-4 mb-4 text-center">
+        <h5 class="text-uppercase mb-4 fw-bold" style="color: azure; padding-bottom: 5px;">
+          Opening Hours
+        </h5>
+        <div style="color: azure; opacity: 0.8;">
+          <p class="mb-1">Every Day</p>
+          <p>10:00 AM - 10:00 PM</p>
+        </div>
+      </div>
+
+      <!-- قسم Feana - متمركز في عموده -->
+      <div class="col-md-4 mb-4 text-center">
+        <a class="text-uppercase mb-4 fw-bold" style="color: azure; display: inline-block; border-bottom: 2px solid rgba(240, 255, 255, 0.2); " href="#">Feana </a>
+
+        <p class="mx-auto" style="color: azure; opacity: 0.8; line-height: 1.6; max-width: 300px;">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate dicta harum, facere atque quod odit.
+        </p>
+      </div>
+
+      <!-- قسم الاتصال - متمركز في عموده -->
+      <div class="col-md-4 mb-4 text-center">
+           <a class="text-uppercase mb-4 fw-bold" style="color: azure; display: inline-block; border-bottom: 2px solid rgba(240, 255, 255, 0.2); " href="pge2.html">Contact us </a>
+
+        <div style="color: azure; opacity: 0.8;">
+          <p class="mb-1">Location, Your City</p>
+          <p class="mb-1">+025897123</p>
+          <p>email@gmail.com</p>
+        </div>
+      </div>
+
+    </div>
+
+    
+
+    <!-- حقوق النشر -->
+    <div class="row m-0">
+      <div class="col-12 text-center">
+        <p class="mb-1" style="color: azure; font-size: 0.9rem;">
+          &copy; 2026 All Rights Reserved By <strong>HTML Templates</strong>
+        </p>
+        <p class="mb-0" style="color: azure; font-size: 0.8rem; opacity: 0.6;">
+          Distributed by ThemeWagon
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+ 
+
+    
+
+ 
+
+
+  <script>
+  function filterMenu(category, element) {
+    // تغيير حالة الأزرار
+    document.querySelectorAll('.food-menu .nav-link').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    element.classList.add('active');
+
+    // تصفية الكاردات
+    const items = document.querySelectorAll('.menu-item');
+    items.forEach(item => {
+      if (category === 'all' || item.classList.contains(category)) {
+        item.style.display = 'block'; // إظهار
+      } else {
+        item.style.display = 'none';  // إخفاء
+      }
+    });
+  }
+  
+ function openSearch() {
+    // إظهار نافذة إدخال (Prompt) بداخلها نص تلميحي
+    let query = prompt("Search", "ابحث هنا ..");
+    
+    if (query != null && query != "ابحث هنا ..") {
+      // هنا يمكنك معالجة ما كتبه المستخدم
+      console.log("نتائج البحث عن: " + query);
+    }
+  }
+
+ 
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة بوتستراب أوفلاين</title>
+    
+    <!-- ربط ملف البوتستراب CSS المحلي -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    
+    <style>
+        body { padding-top: 50px; text-align: center; }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Feana_ تواصل معنا </h1>
+        <p>نسعد بالرد على استفساراتك وتسجيلاتك في الدورات.</p>
+       
+         
+    </nav>
+    <main>
+        <h2></h2>
+        <div class="container mt-5" dir="rtl">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-center">نموذج الاتصال</h2>
+        <form>
+            <!-- الاسم الأول والاسم الأخير بجانب بعض -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الاسم الأول</label>
+                    <input type="text" class="form-control" placeholder="الاسم الأول">
+                </div>
+                <div class="col">
+                    <label class="form-label">الاسم الأخير</label>
+                    <input type="text" class="form-control" placeholder="الاسم الأخير">
+                </div>
+            </div>
+
+            <!-- البريد الإلكتروني في سطر جديد -->
+            <div class="mb-3">
+                <label class="form-label">البريد الإلكتروني</label>
+                <input type="email" class="form-control" placeholder="name@example.com">
+            </div>
+
+            <!-- القائمة المنسدلة للدورات -->
+           
+
+            <!-- نوع الاستفسار (Radio Buttons) -->
+            <div class="mb-3">
+                <label class="form-label d-block">نوع الاستفسار</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="queryType" id="hagez" value="hagez">
+                    <label class="form-check-label" for="hagez">حجز</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="queryType" id="estifsar" value="estifsar">
+                    <label class="form-check-label" for="estifsar">استفسار</label>
+                </div>
+            </div>
+
+            <!-- الخدمات المطلوبة (Checkboxes) -->
+            <div class="mb-3">
+                <label class="form-label d-block">الخدمات المطلوبة</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="service1">
+                    <label class="form-check-label" for="service1">استفسار</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="service2">
+                    <label class="form-check-label" for="service2">شكوى</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="service3">
+                    <label class="form-check-label" for="service3">اقتؤاحات</label>
+                </div>
+            </div>
+
+            <!-- نص الرسالة (Textarea) -->
+            <div class="mb-4">
+                <label class="form-label">تجربتك  مع Feana</label>
+                <textarea class="form-control" rows="4" placeholder="اكتب رسالتك هنا..."></textarea>
+            </div>
+
+            <!-- زر الإرسال -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-danger">إرسال الطلب</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    </main>
+<footer class="text-white pt-5 pb-3 m-0  w-100 bg-dark  background-size: cover; " style="background-color: rgb(30, 30, 43);">
+  <div class="container-fluid px-0">
+    
+    <!-- الصف الرئيسي مع إلغاء الهوامش الجانبية -->
+    <div class="row m-0">
+      
+      <!-- قسم مواعيد العمل - متمركز في عموده -->
+      <div class="col-md-4 mb-4 text-center">
+        <h5 class="text-uppercase mb-4 fw-bold" style="color: azure; padding-bottom: 5px;">
+          Opening Hours
+        </h5>
+        <div style="color: azure; opacity: 0.8;">
+          <p class="mb-1">Every Day</p>
+          <p>10:00 AM - 10:00 PM</p>
+        </div>
+      </div>
+        <!-- قسم Feana - متمركز في عموده -->
+      <div class="col-md-4 mb-4 text-center" >
+        <a class="text-uppercase mb-4 fw-bold" style="color: azure; display: inline-block; border-bottom: 2px solid rgba(240, 255, 255, 0.2); " href="in.html">Feana</a>
+        
+        </h5>
+        <p class="mx-auto" style="color: azure; opacity: 0.8; line-height: 1.6; max-width: 300px;">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate dicta harum, facere atque quod odit.
+        </p>
+      </div>
+
+      <!-- قسم الاتصال - متمركز في عموده -->
+      <div class="col-md-4 mb-4 text-center">
+                <a class="text-uppercase mb-4 fw-bold" style="color: azure; display: inline-block; border-bottom: 2px solid rgba(240, 255, 255, 0.2); " href="#">Contact us </a>
+
+       
+         <div style="color: azure; opacity: 0.8;">
+          <p class="mb-1">Location, Your City</p>
+          <p class="mb-1">+025897123</p>
+          <p>email@gmail.com</p>
+        </div>
+      </div>
+
+    </div>
+ <!-- حقوق النشر -->
+    <div class="row m-0">
+      <div class="col-12 text-center">
+        <p class="mb-1" style="color: azure; font-size: 0.9rem;">
+          &copy; 2026 All Rights Reserved By <strong>HTML Templates</strong>
+        </p>
+        <p class="mb-0" style="color: azure; font-size: 0.8rem; opacity: 0.6;">
+          Distributed by ThemeWagon
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+             
+          
+           
+
+          
+</div>
+
+          
+
+         
+
+        </tbody>
+    </table>
+    <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>جدول الدورات التدريبية</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <style>
+        /* إضافة حدود واضحة للتأكد من رؤية الدمج حتى لو لم يعمل البوتستراب */
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black !important; padding: 12px; }
+    </style>
+</head>
+<body>
+
+
+
+
+</body>
+</html>
+
+
+
+
+   
+
+    <!-- ربط ملف البوتستراب JS المحلي -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
